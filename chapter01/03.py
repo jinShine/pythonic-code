@@ -1,4 +1,4 @@
-# Chapter01-02
+# chapter01-02
 
 # 클래스 메서드, 인스턴스 메서드, Static 메서드
 
@@ -62,6 +62,12 @@ class Student(object):
     def student_const(cls, id, first_name, last_name, email, grade, tuition, gpa):
         return cls(id, first_name, last_name, email, grade, tuition * cls.tuition_per, gpa)
 
+    @staticmethod
+    def is_scholarship(inst):
+        if inst._gpa >= 4.3:
+            return '{} is a scholarship recipient'.format(inst._last_name)
+        return 'Sorry not a scholarship recipient'
+
 
 
 
@@ -113,12 +119,14 @@ print(student_4.detail_info())
 # 학생 학비 변경 확인
 print(student_3)
 
-def is_scholarship(inst):
-    if inst._gpa >= 4.3:
-        return '{} is a scholarship recipient'.format(inst._last_name)
-    return 'Sorry not a scholarship recipient'
+# def is_scholarship(inst):
+#     if inst._gpa >= 4.3:
+#         return '{} is a scholarship recipient'.format(inst._last_name)
+#     return 'Sorry not a scholarship recipient'
 
-print(is_scholarship(student_1))
-print(is_scholarship(student_2))
-print(is_scholarship(student_3))
-print(is_scholarship(student_4))
+print(student_1.is_scholarship(student_1))
+
+print(Student.is_scholarship(student_1))
+# print(is_scholarship(student_2))
+# print(is_scholarship(student_3))
+# print(is_scholarship(student_4))
